@@ -39,7 +39,7 @@ export default function Footer() {
             <div className="flex flex-col gap-4 md:col-span-2">
               <div className="flex items-center gap-2">
                 <Image
-                  src="/svg/logo.svg"
+                  src="/svg/Logo.svg"
                   alt="Eduvest Logo"
                   width={49.251136779785156}
                   height={29.576404571533203}
