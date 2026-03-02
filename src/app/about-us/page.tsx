@@ -11,7 +11,9 @@ export default function AboutUsPage() {
             <HeroSection />
             <TeamSection />
             <WaveBanner />
-           <div className="bg-[#030013]">
+            <div style={{
+               background: "linear-gradient(180deg, #030B46, #000000)",
+            }} className="">
              <Footer />
            </div>
         </div>

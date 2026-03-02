@@ -11,7 +11,7 @@ const sections = [
     title: "Platforma\nnə edir",
     bullets: [
       "Səni sıfırdan başlayıb sistemli aparır",
-      'Mərhələli mövzularla "qarışıq" hissini azaldır',
+      'Mərhələli mövzularla "qarışıqlıq" hissini azaldır',
       "Lokal bazar kontekstini itirmir (AZ fokus)",
     ],
   },
@@ -20,8 +20,8 @@ const sections = [
     title: "Süni intellekt\nnecə kömək edir",
     bullets: [
       "Səni yoxlayır və səviyyəni müəyyən edir",
-      "Anlamadığını sənin dilində yenidən izah edir",
-      'Sual verəndə "google-a göndərmir", cavabı sənin üçün düzəldir',
+      "Anlamadığını sadə dilində yenidən izah edir",
+      'Sual verəndə "google" - a göndərmir, cavabı sənin üçün düzəldir',
     ],
   },
   {
@@ -40,21 +40,23 @@ export default function HowItWorksSection() {
     <>
       <section id="how-it-works"
         style={{ fontFamily: "'Inter', sans-serif" }}
-        className="relative  w-full min-h-[800px] overflow-hidden flex flex-col items-center justify-center py-16 md:py-24"
+        className="relative w-full min-h-[800px] overflow-hidden flex flex-col items-center justify-center py-16 md:py-24"
       >
         {/* Background */}
-        <div className="absolute inset-0 z-0 bg-[linear-gradient(180deg,#163DFC_0%,#00033F_26.92%)]" />
+        <div className="absolute inset-0 z-0 bg-[linear-gradient(180deg,#163DFC_0%,#000846_26.92%)]" />
 
-        {/* Top wave image */}
+        {/* Top wave video (Replaced Image with Video) */}
         <div className="absolute top-0 left-0 w-full z-10">
-          <Image
-            src="/images/Wave.png"
-            alt="Wave"
-            width={1440}
-            height={200}
-            className="w-full object-cover object-top opacity-100"
-            priority
-          />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-auto object-cover object-top opacity-100"
+          >
+            <source src="/videos/linear2.MP4" type="video/mp4" />
+            Sizin brauzeriniz video teqini dəstəkləmir.
+          </video>
         </div>
 
         {/* Content */}
@@ -122,20 +124,19 @@ export default function HowItWorksSection() {
             ))}
           </div>
 
-         <Link href="/ai-assistant" >
+          <Link href="/ai-assistant" >
             {/* CTA Button */}
-          <button className="flex items-center gap-2 font-semibold transition-all duration-200 active:scale-95 bg-white text-[#0d1117] rounded-full px-8 py-3.5 text-sm md:text-base tracking-[-0.01em] shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:bg-[#f0f4ff] hover:shadow-[0_6px_28px_rgba(0,0,0,0.28)]">
-            Ellə indi öyrənməyə başla
-            <Image
-              src="/svg/storm.svg"
-              alt="Storm Icon"
-              width={13}
-              height={23}
-              priority
-              className="object-contain"
-            />
-          </button>
-
+            <button className="flex items-center gap-2 font-semibold transition-all duration-200 active:scale-95 bg-white text-[#0d1117] rounded-full px-8 py-3.5 text-sm md:text-base tracking-[-0.01em] shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:bg-[#f0f4ff] hover:shadow-[0_6px_28px_rgba(0,0,0,0.28)]">
+              İndi öyrənməyə başla
+              <Image
+                src="/svg/storm.svg"
+                alt="Storm Icon"
+                width={13}
+                height={23}
+                priority
+                className="object-contain"
+              />
+            </button>
           </Link>
         </Container>
       </section>

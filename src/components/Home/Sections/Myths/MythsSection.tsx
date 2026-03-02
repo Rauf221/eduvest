@@ -25,7 +25,7 @@ export default function MythsSection() {
       className="relative w-full min-h-[600px] overflow-hidden flex flex-col items-center justify-center py-16 md:py-24"
     >
       {/* Background */}
-      <div className="absolute inset-0 z-0 bg-[linear-gradient(180deg,#01043F_0%,#000DFF_100%)]" />
+      <div className="absolute inset-0 z-0 bg-[linear-gradient(180deg,#000846_10%,#000DFF_100%)]" />
 
       {/* Content */}
       <Container className="relative z-10 flex flex-col items-center gap-8 md:gap-10 max-w-4xl">

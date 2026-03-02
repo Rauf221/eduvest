@@ -10,8 +10,8 @@ const team = [
     image: "/images/Cavid_Agbabali.jpg",
     bio: `Mən Cavid Ağbabalı. Bu layihədə əsas fokusum Eduvest-in maliyyə tərəfi oldu: maliyyə savadlılığının aşağı olmasının insanları investisiyadan necə uzaqlaşdırdığını araşdırdım.
 
-Eyni zamanda platformanın maliyyə biliklərini necə təqdim etməli olduğunu düşünərək, çətin anlayışları hər kəs üçün aydın və praktik formaya salmağa çalışdım. Mənim üçün Eduvest sadəcə bir alat deyil, insanların maliyyə qərarlarında özünə inam qazanmasıdır. Maliyyə savadlılığı artdıqca, daha güclü və daha ədalətli iqtisadiyyat qurmaq mümkün olur.`,
-    focus: "İQTİSADİ YATIN, MALİYYƏNİN VƏ BAZARLARIN REAL İNKİŞAFINA NECƏ TƏSİR ETDİYİNİ ARAŞDIRAM.",
+Eyni zamanda platformanın maliyyə biliklərini necə təqdim etməli olduğunu düşünərək, çətin anlayışları hər kəs üçün aydın və praktik formaya salmağa çalışdım. Mənim üçün Eduvest sadəcə bir alət deyil, insanların maliyyə qərarlarında özünə inam qazanmasıdır. Maliyyə savadlılığı artdıqca, daha güclü və daha ədalətli iqtisadiyyat qurmaq mümkün olur.`,
+    focus: "İQTİSADİYYATIN, MALİYYƏNİN VƏ BAZARLARIN REAL İNKİŞAFINA NECƏ TƏSİR ETDİYİNİ ARAŞDIRIRAM.",
   },
   {
     role: "SÜNİ İNTELLEKT VƏ MƏLUMAT MÜHƏNDİSLİYİ",
@@ -29,7 +29,7 @@ export default function TeamSection() {
       className="w-full py-16 sm:py-20 md:py-28"
       style={{
         fontFamily: "'Inter', sans-serif",
-        background: "linear-gradient(180deg, #030013 0%, #0008A7 100%)",
+        background: "linear-gradient(180deg, #030013 0%, #093FF9 100%)",
       }}
     >
       <Container>

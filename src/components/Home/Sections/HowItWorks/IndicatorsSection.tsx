@@ -39,7 +39,7 @@ export default function IndicatorsSection() {
       className="relative w-full overflow-hidden lg:pb-20"
     >
       {/* Background */}
-      <div className="absolute inset-0 z-0 bg-[#00033F]" />
+      <div className="absolute inset-0 z-0 bg-[#000846]" />
 
       {/* Content */}
       <Container className="relative z-10 flex flex-col gap-8 md:gap-10">

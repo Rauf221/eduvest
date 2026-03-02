@@ -26,8 +26,8 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="w-full px-4 py-6 bg-transparent">
-      <Container>
+    <footer className="w-full px-4 py-6 bg-transparent ">
+      <Container className="">
         <div
           className="w-full mx-auto rounded-4xl px-8 md:px-[60px] pt-[40px] pb-[16px] flex flex-col "
           style={{ background: "#000000" }}
@@ -89,7 +89,7 @@ export default function Footer() {
               <h4 className="text-white font-semibold text-[16px]">Əlaqə</h4>
               <ul className="flex flex-col gap-1">
                
-                {["support@yourdomain.az", "Bakı, Azərbaycan"].map((item) => (
+                {["hello@eduvest.tech", "Bakı, Azərbaycan"].map((item) => (
                   <li key={item}>
                     <span className="text-white/50 text-sm">{item}</span>
                   </li>
@@ -114,7 +114,7 @@ export default function Footer() {
           {/* Bottom row */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
             <p className="text-white/30 text-[15px]">
-              © 2026 CAEDU, LLC. Bütün hüquqlar qorunur.
+              © 2026 EDUVEST Ai, LLC. Bütün hüquqlar qorunur.
             </p>
             <p className="text-white/30 text-[15px]">
               Azərbaycan fond bazarını anlamaq üçün ağıllı yol.

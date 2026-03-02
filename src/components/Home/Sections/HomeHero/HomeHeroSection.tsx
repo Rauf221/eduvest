@@ -7,24 +7,29 @@ import Container from "@/components/Shared/Container";
 export default function HeroSection() {
   return (
     <section
-      className="relative flex items-center justify-end bg-[#020617]"
+      className="relative flex items-center justify-center overflow-hidden bg-[#020617]"
       style={{ height: "120vh" }}
     >
-      {/* Arxa fon */}
-      <div className="absolute bottom-0 left-0 z-0 w-full" style={{ height: "120vh" }}>
-        <Image
-          src="/images/1.png"
-          alt="Background"
-          fill
-          priority
-          className="object-cover object-bottom"
-        />
+      {/* Arxa fon Videosu */}
+      <div className="absolute inset-0 z-0 w-full h-full">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover object-bottom"
+        >
+          <source src="/videos/header-video2.mp4" type="video/mp4" />
+          Tarayıcınız video etiketini desteklemiyor.
+        </video>
+        {/* Videonun üzərinə yüngül qaraltma (overlay) əlavə etmək istəsən: */}
+        <div className="absolute inset-0 bg-black/20 z-10" />
       </div>
 
       {/* Məzmun */}
-      <Container className="relative z-20 flex flex-col items-center justify-center text-center mt-16 md:mt-20">
-        
-        <h1 className="flex flex-col justify-between text-center drop-shadow-md text-white font-medium text-3xl sm:text-4xl md:text-5xl lg:text-[48px] leading-tight lg:leading-none"
+      <Container className="relative z-20 flex flex-col items-center justify-center text-center">
+        <h1 
+          className="flex flex-col justify-between text-center drop-shadow-md text-white font-medium text-3xl sm:text-4xl md:text-5xl lg:text-[48px] leading-tight lg:leading-none"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           <span>İnvestisiya sadə dildə.</span>

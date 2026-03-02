@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Mic, Plus, Send, Loader2 } from "lucide-react";
+import { Mic, Plus, Send, Loader2 } from "lucide-react"; // Lucide-react istifadə olunur
 import { Message, getAIResponse } from "./mockData";
 
 export default function AiChat() {
@@ -16,6 +16,36 @@ export default function AiChat() {
     { id: "2", label: "Baza terminlərini anlat" },
     { id: "3", label: "Süni İntellekt mənə necə kömək edə bilər?" },
   ];
+
+  const renderContent = (content: string) => {
+    return content.split("\n").map((line, index) => {
+      if (line.startsWith("###")) {
+        return (
+          <h3 key={index} className="text-lg font-bold mt-3 mb-2 text-white">
+            {line.replace("###", "").trim()}
+          </h3>
+        );
+      }
+
+      const parts = line.split(/(\*\*.*?\*\*)/g);
+      const formattedLine = parts.map((part, i) => {
+        if (part.startsWith("**") && part.endsWith("**")) {
+          return (
+            <strong key={i} className="font-extrabold text-white">
+              {part.slice(2, -2)}
+            </strong>
+          );
+        }
+        return part;
+      });
+
+      return (
+        <p key={index} className="mb-1 leading-relaxed">
+          {formattedLine}
+        </p>
+      );
+    });
+  };
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -56,20 +86,43 @@ export default function AiChat() {
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
       <style>{`
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-      `}</style>
+          .hide-scrollbar::-webkit-scrollbar { display: none; }
+          @keyframes pulse-glow {
+            0% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+            70% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+            100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+          }
+          .ai-mic-glow {
+            animation: pulse-glow 3s infinite ease-in-out;
+          }
+        `}</style>
 
       {/* ── BACKGROUND ── */}
       <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 transition-opacity duration-500"
-          style={{
-            backgroundImage: "url('/images/aichat.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+          style={{ opacity: messages.length === 0 ? 1 : 0 }}
+        >
+          <source src="/videos/header-video2.mp4" type="video/mp4" />
+        </video>
+
+        {/* ORTADAKİ MİKROFON İKONU */}
+        <div 
+          className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none transition-all duration-500"
+          style={{ 
             opacity: messages.length === 0 ? 1 : 0,
+            transform: messages.length === 0 ? 'scale(1)' : 'scale(0.8)'
           }}
-        />
+        >
+          <div className="ai-mic-glow bg-white/10 backdrop-blur-xl border border-white/20 p-8 md:p-12 rounded-full">
+            <Mic size={60} className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]" strokeWidth={1.5} />
+          </div>
+        </div>
+
         <div
           className="absolute inset-0 transition-opacity duration-500"
           style={{
@@ -95,8 +148,7 @@ export default function AiChat() {
               >
                 {msg.role === "assistant" && (
                   <div className="w-7 h-7 md:w-8 md:h-8 rounded-full shrink-0 mr-2 md:mr-3 mt-1 flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-700 shadow-lg">
-                    <Mic size={12} className="text-white md:hidden" />
-                    <Mic size={14} className="text-white hidden md:block" />
+                    <Mic size={12} className="text-white" />
                   </div>
                 )}
                 <div
@@ -106,7 +158,7 @@ export default function AiChat() {
                       : "bg-white/10 text-white/95 backdrop-blur-md rounded-2xl rounded-tl-sm border border-white/20"
                   }`}
                 >
-                  {msg.content}
+                  {renderContent(msg.content)}
                 </div>
               </div>
             ))}
@@ -128,44 +180,35 @@ export default function AiChat() {
 
       {/* ── BOTTOM CONTROLS ── */}
       <div className="relative z-10 w-full px-3 sm:px-4 md:px-6 pb-4 sm:pb-6 md:pb-8 flex flex-col gap-3 md:gap-4">
-
-        {/* Quick Prompts */}
-        {messages.length === 0 && (
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
-            <span className="text-white/80 text-xs sm:text-sm font-medium shrink-0">
-              Tez başlamaq üçün seçin
-            </span>
-            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-              {exactPrompts.map((qp) => (
-                <button
-                  key={qp.id}
-                  onClick={() => sendMessage(qp.label)}
-                  className="px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-white/95 text-xs sm:text-sm transition-all duration-200"
-                  style={{
-                    border: "1px solid rgba(255,255,255,0.3)",
-                    background: "rgba(255,255,255,0.05)",
-                    backdropFilter: "blur(4px)",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.15)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.05)";
-                  }}
-                >
-                  {qp.label}
-                </button>
-              ))}
-            </div>
+        
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+          <span className="text-white/80 text-xs sm:text-sm font-medium shrink-0">
+            Hızlı öneriler:
+          </span>
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+            {exactPrompts.map((qp) => (
+              <button
+                key={qp.id}
+                onClick={() => sendMessage(qp.label)}
+                className="px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-white/95 text-xs sm:text-sm transition-all duration-200"
+                style={{
+                  border: "1px solid rgba(255,255,255,0.3)",
+                  background: "rgba(255,255,255,0.05)",
+                  backdropFilter: "blur(4px)",
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.15)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.05)"; }}
+              >
+                {qp.label}
+              </button>
+            ))}
           </div>
-        )}
+        </div>
 
-        {/* Input */}
         <div className="w-full bg-white rounded-[1.5rem] md:rounded-[2rem] px-2 md:px-3 py-1.5 md:py-2 flex items-end justify-between gap-2 shadow-2xl">
           <div className="flex flex-1 flex-col-reverse min-w-0">
             <button className="w-8 h-8 md:w-10 md:h-10 mb-1 shrink-0 flex items-center justify-center rounded-full text-[#3A3A3A] hover:bg-gray-100 transition-colors">
-              <Plus size={26} strokeWidth={1.5} className="md:hidden" />
-              <Plus size={34} strokeWidth={1.5} className="hidden md:block" />
+              <Plus size={26} strokeWidth={1.5} />
             </button>
             <textarea
               ref={inputRef}
@@ -186,16 +229,14 @@ export default function AiChat() {
 
           <div className="flex items-center gap-1 md:gap-1.5 shrink-0 mb-1 pr-0.5 md:pr-1">
             <button className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full text-[#3A3A3A] hover:bg-gray-100 transition-colors">
-              <Mic size={22} strokeWidth={1.5} className="md:hidden" />
-              <Mic size={30} strokeWidth={1.5} className="hidden md:block" />
+              <Mic size={22} strokeWidth={1.5} />
             </button>
             <button
               onClick={() => sendMessage(input)}
               disabled={!input.trim()}
               className="w-8 h-8 md:w-10 md:h-10 flex items-center bg-[#163DFC] justify-center rounded-full transition-all disabled:opacity-40 hover:scale-105 active:scale-95 shadow-md"
             >
-              <Send size={18} className="text-white ml-0.5 md:hidden" />
-              <Send size={24} className="text-white ml-0.5 hidden md:block" />
+              <Send size={18} className="text-white ml-0.5" />
             </button>
           </div>
         </div>
