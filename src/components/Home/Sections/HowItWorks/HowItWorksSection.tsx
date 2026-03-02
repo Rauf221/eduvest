@@ -45,7 +45,7 @@ export default function HowItWorksSection() {
         {/* Background */}
         <div className="absolute inset-0 z-0 bg-[linear-gradient(180deg,#163DFC_0%,#000846_26.92%)]" />
 
-        {/* Top wave video (Replaced Image with Video) */}
+      
         <div className="absolute top-0 left-0 w-full z-10">
           <video
             autoPlay

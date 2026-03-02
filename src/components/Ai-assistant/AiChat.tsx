@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Mic, Plus, Send, Loader2 } from "lucide-react"; // Lucide-react istifadə olunur
+import { Mic, Plus, Send, Loader2 } from "lucide-react"; 
 import { Message, getAIResponse } from "./mockData";
 
 export default function AiChat() {

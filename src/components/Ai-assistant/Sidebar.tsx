@@ -66,7 +66,7 @@ export default function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
             eduvest
           </span>
         </div>
-        {/* Mobil üçün bağlama düyməsi */}
+     
         <button
           className="sm:hidden w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
           onClick={() => setMobileOpen(false)}
@@ -199,7 +199,7 @@ export default function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
         <SidebarContent />
       </div>
 
-      {/* Mobil hamburger düyməsi (Yalnız mobil ekranlarda görünür) */}
+   
       {!mobileOpen && (
         <button
           className="sm:hidden absolute top-4 left-4 z-40 w-10 h-10 flex items-center justify-center rounded-xl bg-white/80 backdrop-blur-md shadow-lg border border-white/20"
@@ -217,7 +217,7 @@ export default function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
         />
       )}
 
-      {/* Mobil çekmece (Drawer) */}
+    
       <div
         className={`sm:hidden fixed top-0 left-0 z-[70] h-full w-[280px] shadow-2xl transition-transform duration-300 ease-in-out ${
           mobileOpen ? "translate-x-0" : "-translate-x-full"

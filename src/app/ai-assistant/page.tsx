@@ -19,13 +19,12 @@ export default function DashboardPage() {
     >
       <div className="flex w-full max-w-[1440px] h-[calc(100vh-4rem)] bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-white/30 px-0 relative">
         
-        {/* ── SIDEBARS ── */}
-        {/* Mobil versiya: sm-dən kiçik ekranlarda görünür */}
+    
         <div className="sm:hidden">
           <SidebarCollapsed activeTab={activeTab} setActiveTab={setActiveTab} />
         </div>
 
-        {/* Desktop versiya: sm və yuxarı ekranlarda görünür */}
+     
         <div className="hidden sm:flex">
           <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
         </div>

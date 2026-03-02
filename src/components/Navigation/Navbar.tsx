@@ -80,7 +80,7 @@ export default function Navbar() {
 
       {/* ── MOBILE MENU ── */}
 
-      {/* Overlay — boşluğa tıklayanda bağlanır */}
+    
       {open && (
         <div
           className="md:hidden fixed inset-0 z-30"
