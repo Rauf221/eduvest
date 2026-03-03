@@ -52,7 +52,7 @@ export default function HowItWorksSection() {
             loop
             muted
             playsInline
-            className="w-full h-auto object-cover object-top opacity-100"
+            className="w-full h-[400px] md:h-auto object-cover object-top opacity-100"
           >
             <source src="/videos/linear2.MP4" type="video/mp4" />
             Sizin brauzeriniz video teqini dəstəkləmir.

@@ -75,7 +75,7 @@ export default function TeamSection() {
                 <div className="text-white/70 text-[13px] sm:text-xs md:text-[10px] whitespace-pre-wrap">
                   {member.bio}
                 </div>
-                <p className="text-[#163DFC] text-[10px] sm:text-[11px] font-semibold tracking-wide uppercase mt-1">
+                <p className="text-[#46FFCE] text-[10px] sm:text-[11px] font-semibold tracking-wide uppercase mt-1">
                   {member.focus}
                 </p>
               </div>
